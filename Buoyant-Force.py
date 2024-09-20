@@ -10,14 +10,14 @@ screen = pygame.display.set_mode((500, 500))
 clock = pygame.time.Clock()
 running = True
 
-font = pygame.font.SysFont("Cascadia Mono NF", 18)
+font = pygame.font.Font("fonts/Cascadia_Mono_NF_Bold.ttf", 18)
 
 g = 9.81 # m/s^2
 Water_Density = 1000 # kg/m^3
 
 # density = 0.5 g/c^3
 # density 500 kg/m^3
-cube_mass = 2500 # Kg
+cube_mass = 1500 # Kg
 cube_side_length = 1 # m
 cube_position = Vector2(200, 10) # cm
 cube_velocity = 0 # m
@@ -25,7 +25,7 @@ cube_velocity = 0 # m
 water_level = 250
 
 spring_position = 150 # cm
-spring_k = 9000 # N/m
+spring_k = 12000 # N/m
 
 while running:
     for event in pygame.event.get():
