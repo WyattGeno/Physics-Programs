@@ -30,8 +30,8 @@ while running:
             running = False
             
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_1]: Particles[0].position = pygame.mouse.get_pos()
-    if keys[pygame.K_2]: Particles[1].position = pygame.mouse.get_pos()
+    if keys[pygame.K_1]: Particles[0].position = Vector2(pygame.mouse.get_pos())
+    if keys[pygame.K_2]: Particles[1].position = Vector2(pygame.mouse.get_pos())
 
     screen.fill("white")
 
@@ -43,7 +43,7 @@ while running:
         else:
             color = "black"
         pygame.draw.circle(screen, color, particle.position, 20)
-
+    
     for particle in Particles:
         for i in range(12):
             angle = i/12 * math.pi * 2
@@ -61,11 +61,16 @@ while running:
                 pygame.draw.line(screen, "black", point, point + total_force.normalize() * 1)
                 
                 point = point + total_force.normalize() * 0.1
-            
-    mouse_pos = pygame.mouse.get_pos()
 
-    screen.blit(font.render("Hello World", 1, "black"), (10, 10))
-    
+    """
+    mouse_pos = pygame.mouse.get_pos()
+    v_mouse_pos = Vector2(mouse_pos[0], mouse_pos[1])
+    voltage = 0
+    for particle in Particles:
+        voltage += 1/((v_mouse_pos - particle.position).length())
+
+    screen.blit(font.render(str(voltage), 1, "black"), (10, 10))
+    """
     pygame.display.flip()
 
     clock.tick(60)
